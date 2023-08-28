@@ -14,9 +14,6 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100vw;
     height: 100vh;
   }
