@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const InputContainerStyles = styled.form`
+  box-shadow: inset 0 1.75rem ${(props) => props.theme["gray-700"]};
+  width: 100vw;
+`;
+
+export const Box = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 5rem;
-  gap: 2rem;
+  padding-bottom: 4rem;
+  gap: 1rem;
+  margin: 0 auto;
+  width: 736px;
 `;
 
 export const Button = styled.button`
@@ -23,6 +27,7 @@ export const Button = styled.button`
   font-style: normal;
   font-size: 0.875rem;
   border: none;
+  cursor: pointer;
 `;
 
 export const Input = styled.input`
@@ -32,7 +37,7 @@ export const Input = styled.input`
   border-radius: 8px;
   color: ${(props) => props.theme["gray-100"]};
   padding: 1rem;
-  width: 30rem;
+  width: 100%;
   line-height: 1.4;
   &:focus {
     outline: none;

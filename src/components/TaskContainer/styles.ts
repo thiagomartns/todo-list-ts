@@ -3,13 +3,16 @@ import styled from "styled-components";
 export const Tasks = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  max-width: 736px;
+  margin: 0 auto;
+  width: 75%;
+  gap: 3rem;
 `;
 
 export const TasksCounterStyles = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const TasksCounter = styled.div`
@@ -52,6 +55,9 @@ export const TaskContent = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 0.5rem;
+  border-top: 1px solid ${(props) => props.theme["gray-400"]};
+  padding-top: 3rem;
+  border-radius: 10px;
 
   p {
     color: ${(props) => props.theme["gray-300"]};
