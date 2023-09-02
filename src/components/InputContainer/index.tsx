@@ -1,22 +1,10 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useContext } from "react";
 import { Box, Button, Input, InputContainerStyles } from "./styles";
 import { PlusCircle } from "@phosphor-icons/react";
+import { AppContext } from "../../context/TaskContext";
 
 export const InputContainer = () => {
-  const [tasks, setTasks] = useState<string[]>([]);
-  const [newTask, setNewTask] = useState<string>("");
-
-  const handleChangeNewTask = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewTask(e.target.value);
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setTasks([...tasks, newTask]);
-    console.log(newTask);
-
-    console.log(tasks);
-  };
+  const { handleSubmit, handleChangeNewTask, newTask } = useContext(AppContext);
 
   return (
     <InputContainerStyles onSubmit={handleSubmit}>

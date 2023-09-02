@@ -4,15 +4,18 @@ import { GlobalStyles } from "./styles/global";
 import { Header } from "./components/Header";
 import { InputContainer } from "./components/InputContainer";
 import { TaskContainer } from "./components/TaskContainer";
+import { AppProvider } from "./context/TaskContext";
 
 function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Header />
-      <InputContainer />
-      <TaskContainer />
-      <GlobalStyles />
-    </ThemeProvider>
+    <AppProvider>
+      <ThemeProvider theme={defaultTheme}>
+        <Header />
+        <InputContainer />
+        <TaskContainer />
+        <GlobalStyles />
+      </ThemeProvider>
+    </AppProvider>
   );
 }
 
