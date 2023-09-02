@@ -1,4 +1,3 @@
-import { ClipboardText } from "@phosphor-icons/react";
 import {
   CreatedTasks,
   DoneTasks,
@@ -8,6 +7,7 @@ import {
 } from "./styles";
 import { AppContext } from "../../context/TaskContext";
 import { useContext } from "react";
+import { EmptyTaskList } from "./EmptyTaskList";
 
 export const TaskContainer = () => {
   const { tasks } = useContext(AppContext);
@@ -21,19 +21,11 @@ export const TaskContainer = () => {
         </CreatedTasks>
         <DoneTasks>
           <p>Concluidas</p>
-          <span>0</span>
+          <span>{tasks.length > 0 ? `${0} de ${tasks.length}` : `${0}`}</span>
         </DoneTasks>
       </TasksCounterStyles>
       <TaskContent>
-        {tasks.length === 0 && (
-          <>
-            <ClipboardText size={70} opacity={0.5} />
-            <p>Você ainda não tem tarefas cadastradas</p>
-            <p style={{ fontWeight: 400 }}>
-              Crie tarefas e organize seus itens a fazer
-            </p>
-          </>
-        )}
+        {tasks.length === 0 && <EmptyTaskList />}
         {tasks.length > 0 &&
           tasks.map((task) => (
             <div key={task}>
