@@ -28,11 +28,7 @@ export const TaskContainer = () => {
       <TaskContent>
         {tasks.length === 0 && <EmptyTaskList />}
         {tasks.length > 0 &&
-          tasks.map((task) => (
-            <div key={task}>
-              <TaskListItem task={task} />
-            </div>
-          ))}
+          tasks.map((task) => <TaskListItem key={task} task={task} />)}
       </TaskContent>
     </Tasks>
   );
