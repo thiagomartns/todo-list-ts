@@ -3,7 +3,10 @@ import React, { ChangeEvent, FormEvent, createContext, useState } from "react";
 interface AppContextType {
   handleSubmit: (e: React.FormEvent<HTMLElement>) => void;
   handleChangeNewTask: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  tasks: string[]; // Adicione as tarefas ao contexto
   newTask: string;
+  setTasks: React.Dispatch<React.SetStateAction<string[]>>; // Adicione o setter das tarefas ao contexto
+  setNewTask: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface Props {
@@ -13,7 +16,10 @@ interface Props {
 export const AppContext = createContext<AppContextType>({
   handleSubmit: () => {},
   handleChangeNewTask: () => {},
+  tasks: [],
   newTask: "",
+  setTasks: () => {},
+  setNewTask: () => {},
 });
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
@@ -27,6 +33,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const handleSubmit = (e: FormEvent<HTMLElement>) => {
     e.preventDefault();
     setTasks([...tasks, newTask]);
+    setNewTask("");
   };
 
   const contextValue = {
