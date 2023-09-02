@@ -8,6 +8,7 @@ import {
 import { AppContext } from "../../context/TaskContext";
 import { useContext } from "react";
 import { EmptyTaskList } from "./EmptyTaskList";
+import { TaskListItem } from "./TaskListItem";
 
 export const TaskContainer = () => {
   const { tasks } = useContext(AppContext);
@@ -29,7 +30,7 @@ export const TaskContainer = () => {
         {tasks.length > 0 &&
           tasks.map((task) => (
             <div key={task}>
-              <p>{task}</p>
+              <TaskListItem task={task} />
             </div>
           ))}
       </TaskContent>
