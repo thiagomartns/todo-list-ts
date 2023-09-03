@@ -14,7 +14,6 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     font-size: 1rem;
-    width: 100vw;
-    height: 100vh;
+    overflow-x: hidden
   }
 `;
