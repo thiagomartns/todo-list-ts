@@ -9,6 +9,7 @@ interface AppContextType {
   setCompletedCount: React.Dispatch<React.SetStateAction<number>>;
   setTasks: React.Dispatch<React.SetStateAction<string[]>>;
   setNewTask: React.Dispatch<React.SetStateAction<string>>;
+  removeTask: (task: string) => void;
 }
 
 interface Props {
@@ -24,6 +25,7 @@ export const AppContext = createContext<AppContextType>({
   setCompletedCount: () => {},
   setTasks: () => {},
   setNewTask: () => {},
+  removeTask: () => {},
 });
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
@@ -41,6 +43,16 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setNewTask("");
   };
 
+  const removeTask = (taskToRemove: string) => {
+    const updatedTasks = tasks.filter((task) => task !== taskToRemove);
+
+    setTasks(updatedTasks);
+
+    if (completedCount > 0) {
+      setCompletedCount(completedCount - 1);
+    }
+  };
+
   const contextValue = {
     handleSubmit,
     handleChangeNewTask,
@@ -50,6 +62,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setNewTask,
     completedCount,
     setCompletedCount,
+    removeTask,
   };
 
   return (

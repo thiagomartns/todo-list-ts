@@ -11,7 +11,8 @@ interface TaskListItemProps {
 
 export const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const { completedCount, setCompletedCount } = useContext(AppContext);
+  const { completedCount, setCompletedCount, removeTask } =
+    useContext(AppContext);
 
   const handleChangeIsChecked = () => {
     setIsChecked(!isChecked);
@@ -20,6 +21,10 @@ export const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
     } else {
       setCompletedCount(completedCount - 1);
     }
+  };
+
+  const handleRemoveTask = () => {
+    removeTask(task);
   };
 
   return (
@@ -48,7 +53,7 @@ export const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
         }}
       />
       <p className={isChecked ? "checked" : ""}>{task}</p>
-      <Trash size={28} className="icon" />
+      <Trash onClick={handleRemoveTask} size={28} className="icon" />
     </ListItemStyles>
   );
 };
