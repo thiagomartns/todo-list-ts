@@ -20,4 +20,20 @@ export const ListItemStyles = styled.div`
     font-weight: 400;
     line-height: 1.4;
   }
+
+  .icon {
+    padding: 5px 5.522px 5px 6px;
+    background-color: transparent;
+    font-size: 1rem;
+    border-radius: 4px;
+    &:hover {
+      color: ${(props) => props.theme.danger};
+      background-color: ${(props) => props.theme["gray-400"]};
+      cursor: pointer;
+    }
+  }
+`;
+
+export const CheckboxStyles = styled.input.attrs({ type: "checkbox" })`
+  background-color: "pink";
 `;
