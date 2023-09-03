@@ -21,6 +21,11 @@ export const ListItemStyles = styled.div`
     line-height: 1.4;
   }
 
+  .checked {
+    text-decoration: line-through;
+    color: ${(props) => props.theme["gray-300"]};
+  }
+
   .icon {
     padding: 5px 5.522px 5px 6px;
     background-color: transparent;
@@ -32,8 +37,4 @@ export const ListItemStyles = styled.div`
       cursor: pointer;
     }
   }
-`;
-
-export const CheckboxStyles = styled.input.attrs({ type: "checkbox" })`
-  background-color: "pink";
 `;

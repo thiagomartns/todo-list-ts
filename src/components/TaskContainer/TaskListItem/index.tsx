@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListItemStyles } from "./styles";
 import { Trash } from "@phosphor-icons/react";
 import { Checkbox } from "@mantine/core";
@@ -9,9 +9,17 @@ interface TaskListItemProps {
 }
 
 export const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+
+  const handleChangeIsChecked = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <ListItemStyles>
       <Checkbox
+        checked={isChecked}
+        onChange={handleChangeIsChecked}
         radius="xl"
         styles={{
           input: {
@@ -32,7 +40,7 @@ export const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
           },
         }}
       />
-      <p>{task}</p>
+      <p className={isChecked ? "checked" : ""}>{task}</p>
       <Trash size={28} className="icon" />
     </ListItemStyles>
   );
