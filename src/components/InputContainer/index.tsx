@@ -6,6 +6,8 @@ import { AppContext } from "../../context/TaskContext";
 export const InputContainer = () => {
   const { handleSubmit, handleChangeNewTask, newTask } = useContext(AppContext);
 
+  const isNewTaskEmpty = newTask.length === 0;
+
   return (
     <InputContainerStyles onSubmit={handleSubmit}>
       <Box>
@@ -15,7 +17,7 @@ export const InputContainer = () => {
           onChange={handleChangeNewTask}
           value={newTask}
         />
-        <Button>
+        <Button disabled={isNewTaskEmpty}>
           Criar <PlusCircle size={20} />
         </Button>
       </Box>

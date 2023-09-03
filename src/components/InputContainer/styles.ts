@@ -28,6 +28,11 @@ export const Button = styled.button`
   font-size: 0.875rem;
   border: none;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
 `;
 
 export const Input = styled.input`
