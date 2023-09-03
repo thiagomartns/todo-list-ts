@@ -11,7 +11,7 @@ import { EmptyTaskList } from "./EmptyTaskList";
 import { TaskListItem } from "./TaskListItem";
 
 export const TaskContainer = () => {
-  const { tasks } = useContext(AppContext);
+  const { tasks, completedCount } = useContext(AppContext);
 
   return (
     <Tasks>
@@ -22,7 +22,9 @@ export const TaskContainer = () => {
         </CreatedTasks>
         <DoneTasks>
           <p>Concluidas</p>
-          <span>{tasks.length > 0 ? `${0} de ${tasks.length}` : `${0}`}</span>
+          <span>
+            {tasks.length > 0 ? `${completedCount} de ${tasks.length}` : `${0}`}
+          </span>
         </DoneTasks>
       </TasksCounterStyles>
       <TaskContent>

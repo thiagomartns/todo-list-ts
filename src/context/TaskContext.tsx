@@ -3,9 +3,11 @@ import React, { ChangeEvent, FormEvent, createContext, useState } from "react";
 interface AppContextType {
   handleSubmit: (e: React.FormEvent<HTMLElement>) => void;
   handleChangeNewTask: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  tasks: string[]; // Adicione as tarefas ao contexto
+  tasks: string[];
   newTask: string;
-  setTasks: React.Dispatch<React.SetStateAction<string[]>>; // Adicione o setter das tarefas ao contexto
+  completedCount: number;
+  setCompletedCount: React.Dispatch<React.SetStateAction<number>>;
+  setTasks: React.Dispatch<React.SetStateAction<string[]>>;
   setNewTask: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -18,6 +20,8 @@ export const AppContext = createContext<AppContextType>({
   handleChangeNewTask: () => {},
   tasks: [],
   newTask: "",
+  completedCount: 0,
+  setCompletedCount: () => {},
   setTasks: () => {},
   setNewTask: () => {},
 });
@@ -25,6 +29,7 @@ export const AppContext = createContext<AppContextType>({
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [tasks, setTasks] = useState<string[]>([]);
   const [newTask, setNewTask] = useState<string>("");
+  const [completedCount, setCompletedCount] = useState<number>(0);
 
   const handleChangeNewTask = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTask(e.target.value);
@@ -43,6 +48,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setTasks,
     newTask,
     setNewTask,
+    completedCount,
+    setCompletedCount,
   };
 
   return (

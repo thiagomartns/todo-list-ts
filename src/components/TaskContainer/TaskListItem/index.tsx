@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ListItemStyles } from "./styles";
 import { Trash } from "@phosphor-icons/react";
 import { Checkbox } from "@mantine/core";
 import { defaultTheme } from "../../../styles/themes/default";
+import { AppContext } from "../../../context/TaskContext";
 
 interface TaskListItemProps {
   task: string;
@@ -10,9 +11,15 @@ interface TaskListItemProps {
 
 export const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const { completedCount, setCompletedCount } = useContext(AppContext);
 
   const handleChangeIsChecked = () => {
     setIsChecked(!isChecked);
+    if (!isChecked) {
+      setCompletedCount(completedCount + 1);
+    } else {
+      setCompletedCount(completedCount - 1);
+    }
   };
 
   return (
