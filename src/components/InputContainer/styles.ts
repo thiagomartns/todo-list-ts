@@ -11,6 +11,11 @@ export const Box = styled.div`
   gap: 1rem;
   margin: 0 auto;
   width: 736px;
+
+  @media (min-width: 375px) and (max-width: 996px) {
+    width: 100%;
+    padding: 0 2rem 4rem 2rem;
+  }
 `;
 
 export const Button = styled.button`

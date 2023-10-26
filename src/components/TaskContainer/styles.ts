@@ -7,6 +7,11 @@ export const Tasks = styled.div`
   margin: 0 auto;
   width: 75%;
   gap: 3rem;
+
+  @media (min-width: 375px) and (max-width: 996px) {
+    padding: 0 1.5rem;
+    width: 100%;
+  }
 `;
 
 export const TasksCounterStyles = styled.div`
