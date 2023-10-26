@@ -10,7 +10,7 @@ export const Box = styled.div`
   padding-bottom: 4rem;
   gap: 1rem;
   margin: 0 auto;
-  max-width: 550px;
+  max-width: 736px;
 
   @media (min-width: 375px) and (max-width: 996px) {
     max-width: 500px;
